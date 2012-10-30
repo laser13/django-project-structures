@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 import sys
+import getpass
 from django_structurer.structurer import app_starter
 
 if __name__ == "__main__":
@@ -8,7 +10,8 @@ if __name__ == "__main__":
         yaml_file = file("app_structure.yaml",'r')
     except:
         raise           
-    app_folder='$app_folder'   
+    app_folder = '$app_folder'
     
-    app_starter(app_name,app_folder, yaml_file)
+    app_starter(app_name, app_folder, yaml_file)
+    print u"Многоуважаемый {1}, Ваше приложение {0} создано! Притензии не принимаются!".format(app_name, str(getpass.getuser()))
 

@@ -10,25 +10,9 @@ BASE_PATH = os.path.dirname(PROJECT_PATH)
 sys.path.insert(0, os.path.join(PROJECT_PATH, 'apps'))
 sys.path.insert(0, os.path.join(PROJECT_PATH, 'libs'))
 
-SECRET_KEY = ''
-
-
-CURRENT_ENV = os.environ.get('CURRENT_ENV', 'DEV')
-
 from config import *
 from installed_apps import *
 from logging import *
-
-NO_DEPRECATION_WARNINGS=False
-if CURRENT_ENV == 'PROD':
-    NO_DEPRECATION_WARNINGS=True
-    from env_dev import *
-else:
-    from env_prod import *
-
-if NO_DEPRECATION_WARNINGS:
-    import warnings
-    warnings.simplefilter('ignore', DeprecationWarning)
 
 try:
     from local_settings import *

@@ -5,6 +5,10 @@ archives:
 
 - name: README.MD
 
+- name: manage.py
+  var: $executable
+  snippets: [manage.original]
+
 - name: doc
   archives: []
 
@@ -19,13 +23,9 @@ archives:
   archives:  
   - name: __init__.py
 
-  - name: manage.py
-    var: $executable
-    snippets: [default.manage.original]
-
   - name: app_starter.py
     var: $executable
-    snippets: [default.app_starter.app_starter]
+    snippets: [app_starter.app_starter]
 
   - name: urls.py
     snippets: [general.header, urls.original]
@@ -46,7 +46,7 @@ archives:
       - name: models
         archives:
         - name: __init__.py
-          snippets: [general.header, apps.models.models]
+          snippets: [general.header, apps.models.init]
 
       - name: admin
         archives:
@@ -61,8 +61,10 @@ archives:
       - name: tests
         archives:
         - name: __init__.py
+
         - name: tests_models.py
           snippets: [general.header]
+
         - name: tests_views.py
           snippets: [general.header]
 

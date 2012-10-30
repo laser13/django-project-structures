@@ -1,11 +1,13 @@
-from settings import INSTALLED_APPS, MIDDLEWARE_CLASSES, DEBUG
-
+from installed_apps import INSTALLED_APPS
+from config import MIDDLEWARE_CLASSES
 
 SITE_ID = 1
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
+THUMBNAIL_DEBUG = True
 SERVE_MEDIA = True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -16,4 +18,14 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+MIDDLEWARE_CLASSES += (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+INSTALLED_APPS += (
+    'debug_toolbar',
+)
 
