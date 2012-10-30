@@ -1,0 +1,145 @@
+name: $project_name
+archives:  
+- name: requirements.txt
+  snippets: [general.requirements]
+
+- name: README.MD
+
+- name: doc
+  archives: []
+
+- name: static
+  archives: []
+
+- name: media
+  archives: []
+
+- name: $project_name
+  var: $source
+  archives:  
+  - name: __init__.py
+
+  - name: manage.py
+    var: $executable
+    snippets: [default.manage.original]
+
+  - name: app_starter.py
+    var: $executable
+    snippets: [default.app_starter.app_starter]
+
+  - name: urls.py
+    snippets: [general.header, urls.original]
+     
+  - name: fixtures
+    archives: []
+
+  - name: apps
+    var: $app_folder
+    archives:
+    - name: __init__.py
+
+    - name: $app_name
+      var: $create_with_app
+      archives:
+      - name: __init__.py
+
+      - name: models
+        archives:
+        - name: __init__.py
+          snippets: [general.header, apps.models.models]
+
+      - name: admin
+        archives:
+        - name: __init__.py
+          snippets: [general.header]
+
+      - name: views
+        archives:
+        - name: __init__.py
+          snippets: [general.header, apps.views.views]
+                
+      - name: tests
+        archives:
+        - name: __init__.py
+        - name: tests_models.py
+          snippets: [general.header]
+        - name: tests_views.py
+          snippets: [general.header]
+
+      - name: forms
+        archives:
+        - name: __init__.py
+          snippets: [general.header, apps.forms.forms]
+
+      - name: urls.py
+        snippets: [general.header, apps.urls.urls]
+
+      - name: templates
+        archives:
+        - name: $app_name
+          archives:
+          - name: base.html
+            snippets: [templates.app_base]
+
+          - name: index.html
+            snippets: [templates.app_index]
+
+      - name: templatetags
+        archives:
+        - name: __init__.py
+
+      - name: static
+        archives:
+        - name: $app_name
+          archives:
+          - name: js
+            archives: []
+
+          - name: css
+            archives: []
+
+          - name: img
+            archives: []
+       
+  - name: static
+    archives:
+    - name: js
+      archives: []
+      
+    - name: css
+      archives: []
+      
+    - name: img
+      archives: []
+    
+  - name: settings
+    var: $settings_folder
+    archives:
+    - name: __init__.py
+      snippets: [general.header, settings.settings]
+
+    - name: installed_apps.py
+      snippets: [general.header, settings.installed_apps]
+      
+    - name: config.py
+      snippets: [general.header, settings.config]
+      
+    - name: local_settings.py
+      snippets: [general.header, settings.local]
+
+    - name: logging.py
+      snippets: [general.header, settings.logging]
+      
+  - name: templates
+    var: $templates_folder
+    archives:
+    - name: base.html
+      snippets: [templates.base]
+
+    - name: 404.html
+
+    - name: 500.html
+    
+  - name: libs
+    archives:
+    - name: __init__.py
